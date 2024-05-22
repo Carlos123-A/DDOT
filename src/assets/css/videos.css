@@ -1,0 +1,30 @@
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-container { 
+    display: grid;
+    place-items: center;
+    width: 560px;
+    height: 900px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+.video-container::-webkit-scrollbar {
+    width: 0;
+}
+
+.video {
+    width: 500px;
+    height: 750px;
+    scroll-snap-align: center;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(214, 214, 214, 0.2);
+    margin: 10px 0;
+}
