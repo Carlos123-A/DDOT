@@ -1,22 +1,28 @@
-import React, { useRef, useEffect, useState, useMemo } from 'react'
+import React, { useRef, useEffect, useState} from 'react'
 import '../../assets/css/videos.css'
+import { apiClient } from '../../Api/apiClient'
+
 
 const Videos = () => {
-  const videos = useMemo (() => [
-    { src: '/videos/video5.mp4' },
-    { src: '/videos/video2.mp4' },
-    { src: '/videos/video3.mp4' },
-    { src: '/videos/video4.mp4' },
-    { src: '/videos/hola.mp4' }
-  ], [])
+  const [ videoData, setViodeoData ] = useState([])
+  let video_id = ''
+
+  useEffect(() => {
+    apiClient.get('/', {
+    })
+    .then(response => {
+      setViodeoData(response.data)
+      console.log(response.data)
+    })
+  },[] )
   
   const videoRefs = useRef([])
   const containerRef = useRef(null)
   const [userInteracted, setUserInteracted] = useState(false)
   
   useEffect(() => {
-    videoRefs.current = videoRefs.current.slice(0, videos.length)
-  }, [videos])
+    videoRefs.current = videoRefs.current.slice(0, videoData.length)
+  }, [videoData])
   
   const handleScroll = () => {
     if (!userInteracted) return
@@ -25,7 +31,7 @@ const Videos = () => {
     const containerTop = container.getBoundingClientRect().top
     const containerBottom = containerTop + container.clientHeight
     
-    videos.forEach((video, index) => {
+    videoData.forEach((video, index) => {
       const videoRef = videoRefs.current[index]
       const videoTop = videoRef.getBoundingClientRect().top
       const videoBottom = videoTop + videoRef.clientHeight
@@ -39,6 +45,20 @@ const Videos = () => {
         if (!videoRef.paused) {
           videoRef.pause()
           console.log('Pause ' + parseInt(videoRef.currentTime))
+          if (parseInt(videoRef.currentTime) <= 19){
+            apiClient.post('/user/prefers',{
+              video_id: video_id, 
+              watch_time: parseInt(videoRef.currentTime)
+            
+            })
+            .then (response => 
+              console.log(response.data)
+            )
+            .catch (erro => 
+              console.error(erro.message)
+              
+            )
+          }
         }
       }
     })
@@ -51,10 +71,11 @@ const Videos = () => {
   return (
     <div className="app" onClick={handleContainerClick}>
       <div className="video-container" ref={containerRef} onScroll={handleScroll}>
-        {videos.map((video, index) => (
+        {videoData.map((video, index) => (
+          video_id = video._id,
           <video
             key={index}
-            src={video.src}
+            src={video.url}
             className="video"
             loop
             controls
