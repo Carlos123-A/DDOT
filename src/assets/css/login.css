@@ -1,67 +1,77 @@
 .login-container {
-    width: 400px;
-    margin: 50px auto;
-    padding: 40px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    
-  }
-  
-  .login-container h2 {
-    text-align: center;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .input-field {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  .submit-button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .submit-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .error-message {
-    color: red;
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  .register-link {
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  .register-link span {
-    display: block;
-  }
-  
-  .signup-link {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .signup-link:hover {
-    text-decoration: underline;
-  }
-  
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 40px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #201e1f, #003cff);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #e52e71;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #e52e71;
+  color: #fff;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.register-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.register-link span {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.signup-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}

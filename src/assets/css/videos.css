@@ -28,3 +28,52 @@
     box-shadow: 0 0 10px rgba(214, 214, 214, 0.2);
     margin: 10px 0;
 }
+.scroll-arrows {
+    position: fixed;
+    top: 50%;
+    right: 30px; 
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .scroll-arrows button {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 60px; 
+    color: #f3f3f3; 
+    cursor: pointer;
+    margin: 150px 0; 
+    transition: color 0.3s ease;
+    width: 60px; 
+    height: 60px; 
+  }
+  
+  .scroll-arrows button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; 
+    background-color: #6a6a6d;
+  }
+  
+  .scroll-arrows button::after {
+    content: "\2191"; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px; 
+  }
+  
+  .scroll-arrows button.down-arrow::after {
+    content: "\2193";
+  }
+  

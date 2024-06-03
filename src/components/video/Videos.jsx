@@ -68,6 +68,21 @@ const Videos = () => {
     setUserInteracted(true)
   }
 
+  const scrollVideos = (direction) => {
+    const container = containerRef.current;
+    if (direction === 'up') {
+      container.scrollBy({
+        top: -200,
+        behavior: 'smooth'
+      });
+    } else if (direction === 'down') {
+      container.scrollBy({
+        top: 200,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="app" onClick={handleContainerClick}>
       <div className="video-container" ref={containerRef} onScroll={handleScroll}>
@@ -82,6 +97,10 @@ const Videos = () => {
             ref={el => (videoRefs.current[index] = el)}
           />
         ))}
+      </div>
+      <div className="scroll-arrows">
+        <button className="up-arrow" onClick={() => scrollVideos('up')}>&#8593;</button>
+        <button className="down-arrow" onClick={() => scrollVideos('down')}>&#8595;</button>
       </div>
     </div>
   )
